@@ -1,8 +1,16 @@
 package com.rakin.app;
 
-/** Hello world! */
+import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.*;
+import javax.swing.*;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        FlatDarkLaf.setup();
+
+        SwingUtilities.invokeLater(() -> {
+            Home frame = new Home();
+            frame.setVisible(true);
+        });
     }
 }

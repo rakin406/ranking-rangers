@@ -99,8 +99,8 @@ public class Login extends JPanel {
                         "Warning!", JOptionPane.WARNING_MESSAGE);
                 } else {
                     try {
-                        String usernameStr = "Username: " + username;
-                        String passwordStr = "Password: " + password;
+                        String usernameLine = "Username: " + username;
+                        String passwordLine = "Password: " + password;
                         BufferedReader reader =
                             new BufferedReader(new FileReader(App.USER_DATA_PATH));
 
@@ -110,10 +110,10 @@ public class Login extends JPanel {
 
                         for (int i = 0; i <= totalLines; i++) {
                             String line = Files.readAllLines(Paths.get(App.USER_DATA_PATH)).get(i);
-                            if (line.equals(usernameStr)) {
+                            if (line.equals(usernameLine)) {
                                 String line2 =
                                     Files.readAllLines(Paths.get(App.USER_DATA_PATH)).get((i + 1));
-                                if (line2.equals(passwordStr)) {
+                                if (line2.equals(passwordLine)) {
                                     JOptionPane.showMessageDialog(null, "Login Successful.",
                                         "Ranking Rangers", JOptionPane.WARNING_MESSAGE);
 
@@ -132,7 +132,33 @@ public class Login extends JPanel {
 
         // Register Button
         registerBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {}
+            public void actionPerformed(ActionEvent ae) {
+                String username = usernameFld.getText().trim();
+                String password = passwordFld.toString().trim();
+
+                if (username.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please fill all of the fields.",
+                        "Warning!", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    try {
+                        File file = new File(App.USER_DATA_PATH);
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileWriter fw = new FileWriter(file, true);
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        PrintWriter pw = new PrintWriter(bw);
+
+                        pw.println("Username: " + username);
+                        pw.println("Password: " + password);
+                        pw.println("===============================================");
+                        pw.close();
+                    } catch (Exception ex) {
+                        System.err.println(ex);
+                    }
+                }
+            }
         });
     }
 }

@@ -1,7 +1,9 @@
 package com.rakin.app.pages;
 
 import com.rakin.app.App;
-import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.*;
+import info.movito.themoviedbapi.model.core.*;
+import info.movito.themoviedbapi.tools.model.time.TimeWindow;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.awt.*;
 import javax.swing.*;
@@ -9,7 +11,6 @@ import javax.swing.*;
 public class Home extends JPanel {
     private static Dotenv dotenv;
     private static TmdbApi tmdbApi;
-    private JLabel label1;
     private Font f1;
 
     static {
@@ -21,19 +22,22 @@ public class Home extends JPanel {
         this.setLayout(null);
 
         // Fonts
-        f1 = new Font("Tahoma", Font.BOLD, 48);
+        f1 = new Font("Ranking Rangers", Font.BOLD, 48);
 
-        // Title
-        label1 = new JLabel();
-        label1.setText("Travel Anywhere");
-        label1.setBounds(420, 55, 500, 65);
-        label1.setFont(f1);
-        this.add(label1);
+        try {
+            // Fetch trending movies
+            MovieResultsPage trendingMovies =
+                tmdbApi.getTrending().getMovies(TimeWindow.DAY, "en-US");
 
-        label1 = new JLabel();
-        label1.setText("In the World!");
-        label1.setBounds(420, 120, 500, 65);
-        label1.setFont(f1);
-        this.add(label1);
+            // Display movies
+            for (Movie movie : trendingMovies.getResults()) {
+                String title = movie.getTitle();
+                String overview = movie.getOverview();
+                String posterPath = movie.getPosterPath();
+                String posterURL = "https://image.tmdb.org/t/p/w500" + posterPath;
+            }
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
     }
 }

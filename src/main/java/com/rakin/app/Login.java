@@ -115,7 +115,7 @@ public class Login extends JPanel {
                                     Files.readAllLines(Paths.get(App.USER_DATA_PATH)).get((i + 1));
                                 if (line2.equals(passwordLine)) {
                                     JOptionPane.showMessageDialog(null, "Login Successful.",
-                                        "Ranking Rangers", JOptionPane.WARNING_MESSAGE);
+                                        "Ranking Rangers", JOptionPane.INFORMATION_MESSAGE);
 
                                     app.showCard(App.HOME_PANEL);
                                     break;
@@ -124,7 +124,7 @@ public class Login extends JPanel {
                         }
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, "Invalid Username or Password!",
-                            "Warning!", JOptionPane.WARNING_MESSAGE);
+                            "Warning!", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -157,6 +157,9 @@ public class Login extends JPanel {
                     } catch (Exception ex) {
                         System.err.println(ex);
                     }
+
+                    JOptionPane.showMessageDialog(null, "Registration Successful.",
+                        "Ranking Rangers", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });

@@ -75,14 +75,12 @@ public class Login extends JPanel {
         loginBtn.setBackground(Color.decode("#2E75B6"));
         this.add(loginBtn);
 
-        // Back Button
-        // btn2.addActionListener(new ActionListener() {
-        //     public void actionPerformed(ActionEvent ae) {
-        //         setVisible(false);
-        //         Home frame = new Home();
-        //         frame.setVisible(true);
-        //     }
-        // });
+        // Back click
+        backLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                app.goBack();
+            }
+        });
 
         // Login Button
         loginBtn.addActionListener(new ActionListener() {

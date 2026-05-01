@@ -37,14 +37,14 @@ public class Login extends JPanel {
 
         // Title
         mainLabel = new JLabel();
-        mainLabel.setText("User Login");
-        mainLabel.setBounds(450, 50, 500, 90);
+        mainLabel.setText("Login");
+        mainLabel.setBounds(430, 50, 500, 90);
         mainLabel.setFont(f1);
         this.add(mainLabel);
 
         // User Name
         mainLabel = new JLabel();
-        mainLabel.setText("User Name");
+        mainLabel.setText("Username");
         mainLabel.setBounds(430, 145, 500, 50);
         mainLabel.setFont(f3);
         this.add(mainLabel);

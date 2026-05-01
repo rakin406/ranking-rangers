@@ -109,11 +109,9 @@ public class Login extends JPanel {
                                     Files.readAllLines(Paths.get(App.USER_DATA_PATH)).get((i + 1));
                                 if (line2.equals(passwordStr)) {
                                     JOptionPane.showMessageDialog(null, "Login Successful.",
-                                        "Travel Agency!", JOptionPane.WARNING_MESSAGE);
+                                        "Ranking Rangers", JOptionPane.WARNING_MESSAGE);
 
-                                    setVisible(false);
-                                    // Packs frame = new Packs();
-                                    // frame.setVisible(true);
+                                    app.showCard(App.HOME_PANEL);
                                     break;
                                 }
                             }

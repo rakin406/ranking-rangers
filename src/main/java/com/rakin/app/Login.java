@@ -92,7 +92,7 @@ public class Login extends JPanel {
         loginBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 String username = usernameFld.getText().trim();
-                String password = passwordFld.toString().trim();
+                String password = new String(passwordFld.getPassword()).trim();
 
                 if (username.isEmpty() || password.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all of the fields.",
@@ -134,7 +134,7 @@ public class Login extends JPanel {
         registerBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 String username = usernameFld.getText().trim();
-                String password = passwordFld.toString().trim();
+                String password = new String(passwordFld.getPassword()).trim();
 
                 if (username.isEmpty() || password.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all of the fields.",
@@ -146,20 +146,32 @@ public class Login extends JPanel {
                             file.createNewFile();
                         }
 
+                        String usernameLine = "Username: " + username;
+                        String passwordLine = "Password: " + password;
+
+                        // Check if account already exists
+                        for (String line : Files.readAllLines(file.toPath())) {
+                            if (line.equals(usernameLine)) {
+                                JOptionPane.showMessageDialog(null, "Account already exists!",
+                                    "Warning!", JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
+                        }
+
                         FileWriter fw = new FileWriter(file, true);
                         BufferedWriter bw = new BufferedWriter(fw);
                         PrintWriter pw = new PrintWriter(bw);
 
-                        pw.println("Username: " + username);
-                        pw.println("Password: " + password);
+                        pw.println(usernameLine);
+                        pw.println(passwordLine);
                         pw.println("===============================================");
                         pw.close();
+
+                        JOptionPane.showMessageDialog(null, "Registration Successful.",
+                            "Ranking Rangers", JOptionPane.INFORMATION_MESSAGE);
                     } catch (Exception ex) {
                         System.err.println(ex);
                     }
-
-                    JOptionPane.showMessageDialog(null, "Registration Successful.",
-                        "Ranking Rangers", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });

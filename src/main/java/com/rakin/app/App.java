@@ -18,8 +18,8 @@ public class App extends JFrame {
         this.setResizable(false);
 
         cards = new JPanel(new CardLayout());
-        cards.add(new Home(this), HOME_PANEL);
         cards.add(new Login(this), LOGIN_PANEL);
+        cards.add(new Home(this), HOME_PANEL);
 
         add(cards, BorderLayout.CENTER);
 

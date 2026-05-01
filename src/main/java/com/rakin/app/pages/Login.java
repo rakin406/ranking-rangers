@@ -8,7 +8,7 @@ import java.nio.file.*;
 import javax.swing.*;
 
 public class Login extends JPanel {
-    private JLabel mainLabel, backLabel;
+    private JLabel mainLabel;
     private Font f1, f2, f3, f4;
     private JTextField usernameFld;
     private JButton loginBtn, registerBtn;
@@ -26,13 +26,6 @@ public class Login extends JPanel {
 
         // Cursor for buttons
         cursor = new Cursor(Cursor.HAND_CURSOR);
-
-        // Go back
-        // backLabel = new JLabel("Back");
-        // backLabel.setBounds(10, 5, 215, 50);
-        // backLabel.setFont(f2);
-        // backLabel.setCursor(cursor);
-        // this.add(backLabel);
 
         // Title
         mainLabel = new JLabel();
@@ -81,13 +74,6 @@ public class Login extends JPanel {
         registerBtn.setForeground(Color.WHITE);
         registerBtn.setBackground(Color.decode("#ff2800"));
         this.add(registerBtn);
-
-        // Back click
-        // backLabel.addMouseListener(new MouseAdapter() {
-        //     public void mouseClicked(MouseEvent me) {
-        //         app.goBack();
-        //     }
-        // });
 
         // Login Button
         loginBtn.addActionListener(new ActionListener() {

@@ -17,7 +17,6 @@ public class Login extends JPanel {
 
     Login(App app) {
         this.setLayout(null);
-        this.setBackground(Color.decode("#F2F2F2"));
 
         // Fonts
         f1 = new Font("Segoe UI Black", Font.BOLD, 60);

@@ -91,16 +91,16 @@ public class Login extends JPanel {
         // Login Button
         loginBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                String textField1 = usernameFld.getText().trim(); // Username
-                String textField2 = passwordFld.toString().trim(); // Password
+                String username = usernameFld.getText().trim();
+                String password = passwordFld.toString().trim();
 
-                if (textField1.isEmpty() || textField2.isEmpty()) {
+                if (username.isEmpty() || password.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all of the fields.",
                         "Warning!", JOptionPane.WARNING_MESSAGE);
                 } else {
                     try {
-                        String usernameStr = "Username: " + textField1;
-                        String passwordStr = "Password: " + textField2;
+                        String usernameStr = "Username: " + username;
+                        String passwordStr = "Password: " + password;
                         BufferedReader reader =
                             new BufferedReader(new FileReader(App.USER_DATA_PATH));
 
@@ -128,6 +128,11 @@ public class Login extends JPanel {
                     }
                 }
             }
+        });
+
+        // Register Button
+        registerBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {}
         });
     }
 }

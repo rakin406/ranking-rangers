@@ -18,8 +18,8 @@ public class App extends JFrame {
         this.setResizable(false);
 
         cards = new JPanel(new CardLayout());
-        cards.add(new HomePage(this), HOME_PANEL);
-        cards.add(new LoginPage(this), LOGIN_PANEL);
+        cards.add(new Home(this), HOME_PANEL);
+        cards.add(new Login(this), LOGIN_PANEL);
 
         add(cards, BorderLayout.CENTER);
 
@@ -33,10 +33,6 @@ public class App extends JFrame {
 
     public static void main(String[] args) {
         FlatDarkLaf.setup();
-
-        SwingUtilities.invokeLater(() -> {
-            Home frame = new Home();
-            frame.setVisible(true);
-        });
+        SwingUtilities.invokeLater(App::new);
     }
 }

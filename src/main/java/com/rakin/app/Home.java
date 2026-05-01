@@ -4,25 +4,16 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Home extends JFrame {
-    private Container c;
-    private ImageIcon icon, logo;
+public class Home extends JPanel {
+    // private ImageIcon icon, logo;
     private JLabel label1, imgLabel;
     private Font f1, f2;
     private JButton btn1, btn2, btn3, btn4, nBtn;
     private Cursor cursor;
 
-    Home() {
-        // Frame Layout
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("Ranking Rangers");
-        this.setSize(900, 450);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
-
-        c = this.getContentPane();
-        c.setLayout(null);
-        c.setBackground(Color.decode("#F2F2F2"));
+    Home(App app) {
+        this.setLayout(null);
+        this.setBackground(Color.decode("#F2F2F2"));
 
         // Icon
         // icon = new ImageIcon(getClass().getResource("/images/Icon.png"));
@@ -32,7 +23,7 @@ public class Home extends JFrame {
         // logo = new ImageIcon(getClass().getResource("/images/LogoBlue.png"));
         // imgLabel = new JLabel(logo);
         // imgLabel.setBounds(30, 82, logo.getIconWidth(), logo.getIconHeight());
-        // c.add(imgLabel);
+        // this.add(imgLabel);
 
         // Fonts
         f1 = new Font("Tahoma", Font.BOLD, 48);
@@ -43,13 +34,13 @@ public class Home extends JFrame {
         label1.setText("Travel Anywhere");
         label1.setBounds(420, 55, 500, 65);
         label1.setFont(f1);
-        c.add(label1);
+        this.add(label1);
 
         label1 = new JLabel();
         label1.setText("In the World!");
         label1.setBounds(420, 120, 500, 65);
         label1.setFont(f1);
-        c.add(label1);
+        this.add(label1);
 
         // Cursor for JButtons
         cursor = new Cursor(Cursor.HAND_CURSOR);
@@ -61,7 +52,7 @@ public class Home extends JFrame {
         btn1.setCursor(cursor);
         btn1.setForeground(Color.WHITE);
         btn1.setBackground(Color.decode("#2E75B6"));
-        c.add(btn1);
+        this.add(btn1);
 
         btn2 = new JButton("Register");
         btn2.setBounds(634, 214, 195, 50);
@@ -69,7 +60,7 @@ public class Home extends JFrame {
         btn2.setCursor(cursor);
         btn2.setForeground(Color.WHITE);
         btn2.setBackground(Color.decode("#2E75B6"));
-        c.add(btn2);
+        this.add(btn2);
 
         btn3 = new JButton("Exit");
         btn3.setBounds(418, 288, 195, 50);
@@ -77,18 +68,16 @@ public class Home extends JFrame {
         btn3.setCursor(cursor);
         btn3.setForeground(Color.WHITE);
         btn3.setBackground(Color.decode("#C00000"));
-        c.add(btn3);
+        this.add(btn3);
 
         nBtn = new JButton("");
         nBtn.setBounds(0, 0, 0, 0);
-        c.add(nBtn);
+        this.add(nBtn);
 
         // Login
         btn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                setVisible(false);
-                Login frame = new Login();
-                frame.setVisible(true);
+                app.showCard(App.LOGIN_PANEL);
             }
         });
 
@@ -108,9 +97,4 @@ public class Home extends JFrame {
             }
         });
     }
-
-    // public static void main(String[] args) {
-    //     Home frame = new Home();
-    //     frame.setVisible(true);
-    // }
 }

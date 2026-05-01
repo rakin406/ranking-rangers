@@ -8,9 +8,8 @@ import java.util.*;
 import javax.swing.*;
 
 public class Login extends JPanel {
-    // private ImageIcon icon, logo;
-    private JLabel label1, imgLabel;
-    private Font f1, f2, f3, f4, f5, f6;
+    private JLabel label1;
+    private Font f1, f2, f3, f4;
     private JTextField tf1;
     private JButton btn2, btn3;
     private JPasswordField tf2;
@@ -20,23 +19,11 @@ public class Login extends JPanel {
         this.setLayout(null);
         this.setBackground(Color.decode("#F2F2F2"));
 
-        // Icon
-        // icon = new ImageIcon(getClass().getResource("/images/Icon.png"));
-        // this.setIconImage(icon.getImage());
-
-        // Logo
-        // logo = new ImageIcon(getClass().getResource("/images/LogoBlue.png"));
-        // imgLabel = new JLabel(logo);
-        // imgLabel.setBounds(30, 50, logo.getIconWidth(), logo.getIconHeight());
-        // this.add(imgLabel);
-
         // Fonts
         f1 = new Font("Segoe UI Black", Font.BOLD, 60);
         f2 = new Font("Segoe UI Black", Font.PLAIN, 25);
-        f3 = new Font("Segoe UI Semibold", Font.PLAIN, 35);
-        f4 = new Font("Segoe UI", Font.PLAIN, 30);
-        f5 = new Font("Segoe UI", Font.PLAIN, 22);
-        f6 = new Font("Segoe UI", Font.PLAIN, 25);
+        f3 = new Font("Segoe UI", Font.PLAIN, 30);
+        f4 = new Font("Segoe UI", Font.PLAIN, 22);
 
         // Title
         label1 = new JLabel();
@@ -49,19 +36,19 @@ public class Login extends JPanel {
         label1 = new JLabel();
         label1.setText("User Name");
         label1.setBounds(430, 145, 500, 50);
-        label1.setFont(f4);
+        label1.setFont(f3);
         this.add(label1);
 
         tf1 = new JTextField();
         tf1.setBounds(600, 155, 200, 35);
-        tf1.setFont(f5);
+        tf1.setFont(f4);
         this.add(tf1);
 
         // Password
         label1 = new JLabel();
         label1.setText("Password");
         label1.setBounds(430, 205, 500, 50);
-        label1.setFont(f4);
+        label1.setFont(f3);
         this.add(label1);
 
         tf2 = new JPasswordField();

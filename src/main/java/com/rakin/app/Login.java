@@ -4,14 +4,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.nio.file.*;
-import java.util.*;
 import javax.swing.*;
 
 public class Login extends JPanel {
-    private JLabel label1;
+    private JLabel mainLabel, backLabel;
     private Font f1, f2, f3, f4;
     private JTextField tf1;
-    private JButton btn2, btn3;
+    private JButton loginBtn;
     private JPasswordField tf2;
     private Cursor cursor;
 
@@ -24,19 +23,31 @@ public class Login extends JPanel {
         f3 = new Font("Segoe UI", Font.PLAIN, 30);
         f4 = new Font("Segoe UI", Font.PLAIN, 22);
 
+        // Cursor for buttons
+        cursor = new Cursor(Cursor.HAND_CURSOR);
+
+        // Go back
+        backLabel = new JLabel("Back");
+        backLabel.setBounds(340, 325, 215, 50);
+        backLabel.setFont(f2);
+        backLabel.setCursor(cursor);
+        backLabel.setForeground(Color.WHITE);
+        backLabel.setBackground(Color.decode("#2E75B6"));
+        this.add(backLabel);
+
         // Title
-        label1 = new JLabel();
-        label1.setText("User Login");
-        label1.setBounds(450, 50, 500, 90);
-        label1.setFont(f1);
-        this.add(label1);
+        mainLabel = new JLabel();
+        mainLabel.setText("User Login");
+        mainLabel.setBounds(450, 50, 500, 90);
+        mainLabel.setFont(f1);
+        this.add(mainLabel);
 
         // User Name
-        label1 = new JLabel();
-        label1.setText("User Name");
-        label1.setBounds(430, 145, 500, 50);
-        label1.setFont(f3);
-        this.add(label1);
+        mainLabel = new JLabel();
+        mainLabel.setText("User Name");
+        mainLabel.setBounds(430, 145, 500, 50);
+        mainLabel.setFont(f3);
+        this.add(mainLabel);
 
         tf1 = new JTextField();
         tf1.setBounds(600, 155, 200, 35);
@@ -44,11 +55,11 @@ public class Login extends JPanel {
         this.add(tf1);
 
         // Password
-        label1 = new JLabel();
-        label1.setText("Password");
-        label1.setBounds(430, 205, 500, 50);
-        label1.setFont(f3);
-        this.add(label1);
+        mainLabel = new JLabel();
+        mainLabel.setText("Password");
+        mainLabel.setBounds(430, 205, 500, 50);
+        mainLabel.setFont(f3);
+        this.add(mainLabel);
 
         tf2 = new JPasswordField();
         tf2.setBounds(600, 215, 200, 35);
@@ -56,24 +67,13 @@ public class Login extends JPanel {
         tf2.setEchoChar('*');
         this.add(tf2);
 
-        // Cursor for JButtons
-        cursor = new Cursor(Cursor.HAND_CURSOR);
-
-        btn2 = new JButton("Back");
-        btn2.setBounds(340, 325, 215, 50);
-        btn2.setFont(f2);
-        btn2.setCursor(cursor);
-        btn2.setForeground(Color.WHITE);
-        btn2.setBackground(Color.decode("#2E75B6"));
-        this.add(btn2);
-
-        btn3 = new JButton("Login");
-        btn3.setBounds(590, 325, 215, 50);
-        btn3.setFont(f2);
-        btn3.setCursor(cursor);
-        btn3.setForeground(Color.WHITE);
-        btn3.setBackground(Color.decode("#2E75B6"));
-        this.add(btn3);
+        loginBtn = new JButton("Login");
+        loginBtn.setBounds(590, 325, 215, 50);
+        loginBtn.setFont(f2);
+        loginBtn.setCursor(cursor);
+        loginBtn.setForeground(Color.WHITE);
+        loginBtn.setBackground(Color.decode("#2E75B6"));
+        this.add(loginBtn);
 
         // Back Button
         // btn2.addActionListener(new ActionListener() {
@@ -85,7 +85,7 @@ public class Login extends JPanel {
         // });
 
         // Login Button
-        btn3.addActionListener(new ActionListener() {
+        loginBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 String textField1 = tf1.getText().toLowerCase(); // User Name
                 String textField2 = tf2.toString(); // Password

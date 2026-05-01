@@ -119,7 +119,7 @@ public class Login extends JPanel {
                             }
                         }
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Invalid User Name or Password!",
+                        JOptionPane.showMessageDialog(null, "Invalid Username or Password!",
                             "Warning!", JOptionPane.WARNING_MESSAGE);
                     }
                 }

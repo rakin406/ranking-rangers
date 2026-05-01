@@ -25,14 +25,14 @@ public class Home extends JFrame {
         c.setBackground(Color.decode("#F2F2F2"));
 
         // Icon
-        icon = new ImageIcon(getClass().getResource("/images/Icon.png"));
-        this.setIconImage(icon.getImage());
+        // icon = new ImageIcon(getClass().getResource("/images/Icon.png"));
+        // this.setIconImage(icon.getImage());
 
         // Logo
-        logo = new ImageIcon(getClass().getResource("/images/LogoBlue.png"));
-        imgLabel = new JLabel(logo);
-        imgLabel.setBounds(30, 82, logo.getIconWidth(), logo.getIconHeight());
-        c.add(imgLabel);
+        // logo = new ImageIcon(getClass().getResource("/images/LogoBlue.png"));
+        // imgLabel = new JLabel(logo);
+        // imgLabel.setBounds(30, 82, logo.getIconWidth(), logo.getIconHeight());
+        // c.add(imgLabel);
 
         // Fonts
         f1 = new Font("Tahoma", Font.BOLD, 48);
@@ -109,8 +109,8 @@ public class Home extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
-        Home frame = new Home();
-        frame.setVisible(true);
-    }
+    // public static void main(String[] args) {
+    //     Home frame = new Home();
+    //     frame.setVisible(true);
+    // }
 }

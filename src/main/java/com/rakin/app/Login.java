@@ -30,14 +30,14 @@ public class Login extends JFrame {
         c.setBackground(Color.decode("#F2F2F2"));
 
         // Icon
-        icon = new ImageIcon(getClass().getResource("/images/Icon.png"));
-        this.setIconImage(icon.getImage());
+        // icon = new ImageIcon(getClass().getResource("/images/Icon.png"));
+        // this.setIconImage(icon.getImage());
 
         // Logo
-        logo = new ImageIcon(getClass().getResource("/images/LogoBlue.png"));
-        imgLabel = new JLabel(logo);
-        imgLabel.setBounds(30, 50, logo.getIconWidth(), logo.getIconHeight());
-        c.add(imgLabel);
+        // logo = new ImageIcon(getClass().getResource("/images/LogoBlue.png"));
+        // imgLabel = new JLabel(logo);
+        // imgLabel.setBounds(30, 50, logo.getIconWidth(), logo.getIconHeight());
+        // c.add(imgLabel);
 
         // Fonts
         f1 = new Font("Segoe UI Black", Font.BOLD, 60);
@@ -174,8 +174,8 @@ public class Login extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
-        Login frame = new Login();
-        frame.setVisible(true);
-    }
+    // public static void main(String[] args) {
+    //     Login frame = new Login();
+    //     frame.setVisible(true);
+    // }
 }

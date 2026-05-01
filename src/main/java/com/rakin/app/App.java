@@ -1,9 +1,8 @@
 package com.rakin.app;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.rakin.app.pages.*;
 import java.awt.*;
-import java.util.ArrayDeque;
-import java.util.Deque;
 import javax.swing.*;
 
 public class App extends JFrame {
@@ -13,7 +12,6 @@ public class App extends JFrame {
 
     private CardLayout cardLayout;
     private JPanel cardPanel;
-    private final Deque<String> history = new ArrayDeque<>();
     private String currentCard = LOGIN_PANEL;
 
     App() {
@@ -41,18 +39,8 @@ public class App extends JFrame {
         if (name.equals(currentCard)) {
             return;
         }
-        history.push(currentCard);
         currentCard = name;
         cardLayout.show(cardPanel, name);
-    }
-
-    /** Navigate to the previous card. */
-    public void goBack() {
-        if (history.isEmpty()) {
-            return;
-        }
-        currentCard = history.pop();
-        cardLayout.show(cardPanel, currentCard);
     }
 
     public static void main(String[] args) {

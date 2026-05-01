@@ -12,7 +12,7 @@ public class Login extends JPanel {
     private JLabel label1, imgLabel;
     private Font f1, f2, f3, f4, f5, f6;
     private JTextField tf1;
-    private JButton btn1, btn2, btn3, nBtn;
+    private JButton btn2, btn3;
     private JPasswordField tf2;
     private Cursor cursor;
 
@@ -73,15 +73,6 @@ public class Login extends JPanel {
         // Cursor for JButtons
         cursor = new Cursor(Cursor.HAND_CURSOR);
 
-        // JButtons
-        btn1 = new JButton("Exit");
-        btn1.setBounds(90, 325, 215, 50);
-        btn1.setFont(f2);
-        btn1.setCursor(cursor);
-        btn1.setForeground(Color.WHITE);
-        btn1.setBackground(Color.decode("#C00000"));
-        this.add(btn1);
-
         btn2 = new JButton("Back");
         btn2.setBounds(340, 325, 215, 50);
         btn2.setFont(f2);
@@ -97,17 +88,6 @@ public class Login extends JPanel {
         btn3.setForeground(Color.WHITE);
         btn3.setBackground(Color.decode("#2E75B6"));
         this.add(btn3);
-
-        nBtn = new JButton("");
-        nBtn.setBounds(0, 0, 0, 0);
-        this.add(nBtn);
-
-        // Exit Button
-        btn1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                System.exit(0);
-            }
-        });
 
         // Back Button
         // btn2.addActionListener(new ActionListener() {

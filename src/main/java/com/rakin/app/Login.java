@@ -96,19 +96,17 @@ public class Login extends JPanel {
                         String userNameS = "User Name : " + textField1;
                         String passwordS = "Password : " + textField2;
                         BufferedReader reader =
-                            new BufferedReader(new FileReader(".\\Data\\user_data.txt"));
+                            new BufferedReader(new FileReader(App.USER_DATA_PATH));
 
                         int totalLines = 0;
                         while (reader.readLine() != null) totalLines++;
                         reader.close();
 
                         for (int i = 0; i <= totalLines; i++) {
-                            String line =
-                                Files.readAllLines(Paths.get(".\\Data\\user_data.txt")).get(i);
+                            String line = Files.readAllLines(Paths.get(App.USER_DATA_PATH)).get(i);
                             if (line.equals(userNameS)) {
                                 String line2 =
-                                    Files.readAllLines(Paths.get(".\\Data\\user_data.txt"))
-                                        .get((i + 1));
+                                    Files.readAllLines(Paths.get(App.USER_DATA_PATH)).get((i + 1));
                                 if (line2.equals(passwordS)) {
                                     JOptionPane.showMessageDialog(null, "Login Successful.",
                                         "Travel Agency!", JOptionPane.WARNING_MESSAGE);

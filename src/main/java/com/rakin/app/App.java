@@ -7,6 +7,7 @@ import java.util.Deque;
 import javax.swing.*;
 
 public class App extends JFrame {
+    public final static String USER_DATA_PATH = ".\\Data\\user_data.txt";
     public final static String HOME_PANEL = "Home";
     public final static String LOGIN_PANEL = "Login";
 

@@ -31,4 +31,9 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# dotenv environment variable files
+.env
+.env.*
+!.env.example
+
 *.txt

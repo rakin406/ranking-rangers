@@ -1,12 +1,21 @@
 package com.rakin.app.pages;
 
 import com.rakin.app.App;
+import info.movito.themoviedbapi.TmdbApi;
+import io.github.cdimascio.dotenv.Dotenv;
 import java.awt.*;
 import javax.swing.*;
 
 public class Home extends JPanel {
+    private static Dotenv dotenv;
+    private static TmdbApi tmdbApi;
     private JLabel label1;
     private Font f1;
+
+    static {
+        dotenv = Dotenv.load();
+        tmdbApi = new TmdbApi(dotenv.get("TMDB_ACCESS_TOKEN"));
+    }
 
     public Home(App app) {
         this.setLayout(null);

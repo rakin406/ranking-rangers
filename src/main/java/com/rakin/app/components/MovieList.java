@@ -7,8 +7,8 @@ public class MovieList extends JPanel {
     private Font f1;
     private Cursor cursor;
 
-    public MovieList() {
-        this.setLayout(null);
+    public MovieList(String movies) {
+        this.setLayout(new GridLayout(5, 0, 10, 10));
 
         f1 = new Font("Segoe UI", Font.PLAIN, 22);
 

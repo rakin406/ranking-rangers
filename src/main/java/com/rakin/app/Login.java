@@ -31,8 +31,6 @@ public class Login extends JPanel {
         backLabel.setBounds(10, 5, 215, 50);
         backLabel.setFont(f2);
         backLabel.setCursor(cursor);
-        backLabel.setForeground(Color.WHITE);
-        backLabel.setBackground(Color.decode("#2E75B6"));
         this.add(backLabel);
 
         // Title

@@ -1,5 +1,6 @@
-package com.rakin.app;
+package com.rakin.app.pages;
 
+import com.rakin.app.App;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -14,7 +15,7 @@ public class Login extends JPanel {
     private JPasswordField passwordFld;
     private Cursor cursor;
 
-    Login(App app) {
+    public Login(App app) {
         this.setLayout(null);
 
         // Fonts

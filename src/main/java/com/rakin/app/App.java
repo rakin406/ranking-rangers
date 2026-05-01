@@ -1,6 +1,7 @@
 package com.rakin.app;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.rakin.app.pages.*;
 import java.awt.*;
 import java.util.ArrayDeque;
 import java.util.Deque;

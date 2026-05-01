@@ -1,5 +1,6 @@
-package com.rakin.app;
+package com.rakin.app.pages;
 
+import com.rakin.app.App;
 import java.awt.*;
 import javax.swing.*;
 
@@ -7,7 +8,7 @@ public class Home extends JPanel {
     private JLabel label1;
     private Font f1;
 
-    Home(App app) {
+    public Home(App app) {
         this.setLayout(null);
 
         // Fonts

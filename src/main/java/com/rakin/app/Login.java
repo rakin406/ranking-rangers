@@ -169,6 +169,7 @@ public class Login extends JPanel {
 
                         JOptionPane.showMessageDialog(null, "Registration Successful.",
                             "Ranking Rangers", JOptionPane.INFORMATION_MESSAGE);
+                        app.showCard(App.HOME_PANEL);
                     } catch (Exception ex) {
                         System.err.println(ex);
                     }

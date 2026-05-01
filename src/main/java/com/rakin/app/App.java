@@ -14,7 +14,7 @@ public class App extends JFrame {
     private CardLayout cardLayout;
     private JPanel cardPanel;
     private final Deque<String> history = new ArrayDeque<>();
-    private String currentCard = HOME_PANEL;
+    private String currentCard = LOGIN_PANEL;
 
     App() {
         // Frame Layout

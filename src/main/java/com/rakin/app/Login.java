@@ -28,7 +28,7 @@ public class Login extends JPanel {
 
         // Go back
         backLabel = new JLabel("Back");
-        backLabel.setBounds(340, 325, 215, 50);
+        backLabel.setBounds(10, 5, 215, 50);
         backLabel.setFont(f2);
         backLabel.setCursor(cursor);
         backLabel.setForeground(Color.WHITE);

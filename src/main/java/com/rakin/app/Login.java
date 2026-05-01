@@ -85,16 +85,16 @@ public class Login extends JPanel {
         // Login Button
         loginBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                String textField1 = tf1.getText().toLowerCase(); // User Name
-                String textField2 = tf2.toString(); // Password
+                String textField1 = tf1.getText().trim(); // Username
+                String textField2 = tf2.toString().trim(); // Password
 
                 if (textField1.isEmpty() || textField2.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all of the fields.",
                         "Warning!", JOptionPane.WARNING_MESSAGE);
                 } else {
                     try {
-                        String userNameS = "User Name : " + textField1;
-                        String passwordS = "Password : " + textField2;
+                        String usernameStr = "Username: " + textField1;
+                        String passwordStr = "Password: " + textField2;
                         BufferedReader reader =
                             new BufferedReader(new FileReader(App.USER_DATA_PATH));
 
@@ -104,10 +104,10 @@ public class Login extends JPanel {
 
                         for (int i = 0; i <= totalLines; i++) {
                             String line = Files.readAllLines(Paths.get(App.USER_DATA_PATH)).get(i);
-                            if (line.equals(userNameS)) {
+                            if (line.equals(usernameStr)) {
                                 String line2 =
                                     Files.readAllLines(Paths.get(App.USER_DATA_PATH)).get((i + 1));
-                                if (line2.equals(passwordS)) {
+                                if (line2.equals(passwordStr)) {
                                     JOptionPane.showMessageDialog(null, "Login Successful.",
                                         "Travel Agency!", JOptionPane.WARNING_MESSAGE);
 

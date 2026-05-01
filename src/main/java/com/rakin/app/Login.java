@@ -9,9 +9,9 @@ import javax.swing.*;
 public class Login extends JPanel {
     private JLabel mainLabel, backLabel;
     private Font f1, f2, f3, f4;
-    private JTextField tf1;
-    private JButton loginBtn;
-    private JPasswordField tf2;
+    private JTextField usernameFld;
+    private JButton loginBtn, registerBtn;
+    private JPasswordField passwordFld;
     private Cursor cursor;
 
     Login(App app) {
@@ -27,11 +27,11 @@ public class Login extends JPanel {
         cursor = new Cursor(Cursor.HAND_CURSOR);
 
         // Go back
-        backLabel = new JLabel("Back");
-        backLabel.setBounds(10, 5, 215, 50);
-        backLabel.setFont(f2);
-        backLabel.setCursor(cursor);
-        this.add(backLabel);
+        // backLabel = new JLabel("Back");
+        // backLabel.setBounds(10, 5, 215, 50);
+        // backLabel.setFont(f2);
+        // backLabel.setCursor(cursor);
+        // this.add(backLabel);
 
         // Title
         mainLabel = new JLabel();
@@ -47,10 +47,10 @@ public class Login extends JPanel {
         mainLabel.setFont(f3);
         this.add(mainLabel);
 
-        tf1 = new JTextField();
-        tf1.setBounds(600, 155, 200, 35);
-        tf1.setFont(f4);
-        this.add(tf1);
+        usernameFld = new JTextField();
+        usernameFld.setBounds(600, 155, 200, 35);
+        usernameFld.setFont(f4);
+        this.add(usernameFld);
 
         // Password
         mainLabel = new JLabel();
@@ -59,32 +59,40 @@ public class Login extends JPanel {
         mainLabel.setFont(f3);
         this.add(mainLabel);
 
-        tf2 = new JPasswordField();
-        tf2.setBounds(600, 215, 200, 35);
-        tf2.setFont(f2);
-        tf2.setEchoChar('*');
-        this.add(tf2);
+        passwordFld = new JPasswordField();
+        passwordFld.setBounds(600, 215, 200, 35);
+        passwordFld.setFont(f2);
+        passwordFld.setEchoChar('*');
+        this.add(passwordFld);
 
         loginBtn = new JButton("Login");
-        loginBtn.setBounds(590, 325, 215, 50);
+        loginBtn.setBounds(430, 325, 215, 50);
         loginBtn.setFont(f2);
         loginBtn.setCursor(cursor);
         loginBtn.setForeground(Color.WHITE);
         loginBtn.setBackground(Color.decode("#2E75B6"));
         this.add(loginBtn);
 
+        registerBtn = new JButton("Register");
+        registerBtn.setBounds(655, 325, 215, 50);
+        registerBtn.setFont(f2);
+        registerBtn.setCursor(cursor);
+        registerBtn.setForeground(Color.WHITE);
+        registerBtn.setBackground(Color.decode("#ff2800"));
+        this.add(registerBtn);
+
         // Back click
-        backLabel.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent me) {
-                app.goBack();
-            }
-        });
+        // backLabel.addMouseListener(new MouseAdapter() {
+        //     public void mouseClicked(MouseEvent me) {
+        //         app.goBack();
+        //     }
+        // });
 
         // Login Button
         loginBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                String textField1 = tf1.getText().trim(); // Username
-                String textField2 = tf2.toString().trim(); // Password
+                String textField1 = usernameFld.getText().trim(); // Username
+                String textField2 = passwordFld.toString().trim(); // Password
 
                 if (textField1.isEmpty() || textField2.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all of the fields.",

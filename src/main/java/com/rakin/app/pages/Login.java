@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class Login extends JPanel {
     private JLabel mainLabel;
-    private Font f1, f2, f3, f4;
+    private Font f1, f2, f3;
     private JTextField usernameFld;
     private JButton loginBtn, registerBtn;
     private JPasswordField passwordFld;
@@ -21,8 +21,7 @@ public class Login extends JPanel {
         // Fonts
         f1 = new Font("Segoe UI Black", Font.BOLD, 60);
         f2 = new Font("Segoe UI Black", Font.PLAIN, 25);
-        f3 = new Font("Segoe UI", Font.PLAIN, 30);
-        f4 = new Font("Segoe UI", Font.PLAIN, 22);
+        f3 = new Font("Segoe UI", Font.PLAIN, 22);
 
         // Cursor for buttons
         cursor = new Cursor(Cursor.HAND_CURSOR);
@@ -34,29 +33,19 @@ public class Login extends JPanel {
         mainLabel.setFont(f1);
         this.add(mainLabel);
 
-        // User Name
-        mainLabel = new JLabel();
-        mainLabel.setText("Username");
-        mainLabel.setBounds(430, 145, 500, 50);
-        mainLabel.setFont(f3);
-        this.add(mainLabel);
-
+        // Username
         usernameFld = new JTextField();
-        usernameFld.setBounds(600, 155, 200, 35);
-        usernameFld.setFont(f4);
+        usernameFld.setBounds(430, 145, 350, 50);
+        usernameFld.setFont(f3);
+        usernameFld.putClientProperty("JTextField.placeholderText", "Username");
         this.add(usernameFld);
 
         // Password
-        mainLabel = new JLabel();
-        mainLabel.setText("Password");
-        mainLabel.setBounds(430, 205, 500, 50);
-        mainLabel.setFont(f3);
-        this.add(mainLabel);
-
         passwordFld = new JPasswordField();
-        passwordFld.setBounds(600, 215, 200, 35);
-        passwordFld.setFont(f2);
+        passwordFld.setBounds(430, 205, 350, 50);
+        passwordFld.setFont(f3);
         passwordFld.setEchoChar('*');
+        passwordFld.putClientProperty("JTextField.placeholderText", "Password");
         this.add(passwordFld);
 
         loginBtn = new JButton("Login");

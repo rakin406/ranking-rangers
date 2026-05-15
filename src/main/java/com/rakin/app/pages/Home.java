@@ -1,7 +1,7 @@
 package com.rakin.app.pages;
 
 import com.rakin.app.App;
-import com.rakin.app.components.MovieList;
+import com.rakin.app.components.*;
 import info.movito.themoviedbapi.*;
 import info.movito.themoviedbapi.model.core.*;
 import info.movito.themoviedbapi.tools.model.time.TimeWindow;
@@ -12,6 +12,8 @@ import javax.swing.*;
 public class Home extends JPanel {
     private static Dotenv dotenv;
     private static TmdbApi tmdbApi;
+    private JScrollPane scroll;
+    private NavigationBar navBar;
 
     static {
         dotenv = Dotenv.load();
@@ -21,6 +23,9 @@ public class Home extends JPanel {
     public Home(App app) {
         this.setLayout(new BorderLayout());
 
+        navBar = new NavigationBar();
+        this.add(navBar, BorderLayout.NORTH);
+
         try {
             // Fetch trending movies
             MovieResultsPage trendingMovies =
@@ -29,7 +34,7 @@ public class Home extends JPanel {
             MovieList movieList = new MovieList(trendingMovies.getResults());
 
             // Make it scrollable in case content overflows
-            JScrollPane scroll = new JScrollPane(movieList);
+            scroll = new JScrollPane(movieList);
             scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
             scroll.setBorder(null);

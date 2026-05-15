@@ -1,6 +1,5 @@
 package com.rakin.app.pages;
 
-import com.rakin.app.App;
 import com.rakin.app.components.*;
 import info.movito.themoviedbapi.*;
 import info.movito.themoviedbapi.model.core.*;

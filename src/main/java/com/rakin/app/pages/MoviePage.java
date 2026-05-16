@@ -6,6 +6,7 @@ import java.awt.*;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class MoviePage extends JFrame {
     private JPanel panel;
@@ -25,27 +26,106 @@ public class MoviePage extends JFrame {
         try {
             String title = m.getTitle();
             String posterPath = m.getPosterPath();
+            String overview = m.getOverview();
 
-            panel = new JPanel();
-            panel.setLayout(new BorderLayout());
-            panel.setBackground(Color.DARK_GRAY);
+            // Main panel
+            panel = new JPanel(new BorderLayout(20, 0));
+            panel.setBackground(new Color(45, 45, 45));
+            panel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-            // Poster image
+            // LEFT: Poster
+            JLabel posterLabel;
             if (posterPath != null && !posterPath.isEmpty()) {
                 URL posterURL = new URL("https://image.tmdb.org/t/p/w500" + posterPath);
                 Image raw = ImageIO.read(posterURL);
-                Image scaled = raw.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
-                panel.add(new JLabel(new ImageIcon(scaled)), BorderLayout.CENTER);
+                Image scaled = raw.getScaledInstance(280, 420, Image.SCALE_SMOOTH);
+                posterLabel = new JLabel(new ImageIcon(scaled));
             } else {
-                panel.add(new JLabel("No Image", SwingConstants.CENTER), BorderLayout.CENTER);
+                posterLabel = new JLabel("No Image", SwingConstants.CENTER);
+                posterLabel.setPreferredSize(new Dimension(280, 420));
+                posterLabel.setForeground(Color.LIGHT_GRAY);
+                posterLabel.setOpaque(true);
+                posterLabel.setBackground(new Color(60, 60, 60));
             }
+            posterLabel.setPreferredSize(new Dimension(280, 420));
+            panel.add(posterLabel, BorderLayout.WEST);
+
+            // RIGHT: Details
+            JPanel detailsPanel = new JPanel();
+            detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.Y_AXIS));
+            detailsPanel.setBackground(new Color(45, 45, 45));
+            detailsPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
             // Title
-            titleLabel = new JLabel(title, SwingConstants.CENTER);
-            titleLabel.setFont(f1);
-            panel.add(titleLabel, BorderLayout.SOUTH);
+            titleLabel = new JLabel("<html>" + title + "</html>");
+            titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
+            titleLabel.setForeground(Color.WHITE);
+            titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+            // Release year
+            String releaseDate = m.getReleaseDate();
+            String year = (releaseDate != null && releaseDate.length() >= 4)
+                ? releaseDate.substring(0, 4)
+                : "Unknown";
+            JLabel yearLabel = new JLabel("Release Year: " + year);
+            yearLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            yearLabel.setForeground(new Color(180, 180, 180));
+            yearLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+            // Divider
+            JSeparator sep = new JSeparator();
+            sep.setForeground(new Color(100, 100, 100));
+            sep.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1));
+
+            // Description
+            JLabel descHeading = new JLabel("Overview");
+            descHeading.setFont(new Font("Segoe UI", Font.BOLD, 15));
+            descHeading.setForeground(new Color(200, 200, 200));
+            descHeading.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+            String overviewText =
+                (overview != null && !overview.isEmpty()) ? overview : "No description available.";
+            JTextArea descArea = new JTextArea(overviewText);
+            descArea.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            descArea.setForeground(Color.LIGHT_GRAY);
+            descArea.setBackground(new Color(45, 45, 45));
+            descArea.setLineWrap(true);
+            descArea.setWrapStyleWord(true);
+            descArea.setEditable(false);
+            descArea.setFocusable(false);
+            descArea.setAlignmentX(Component.LEFT_ALIGNMENT);
+            descArea.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
+
+            // Bookmark button
+            JButton bookmarkBtn = new JButton("Bookmark");
+            bookmarkBtn.setFont(new Font("Segoe UI", Font.BOLD, 15));
+            bookmarkBtn.setBackground(new Color(255, 180, 0));
+            bookmarkBtn.setForeground(Color.BLACK);
+            bookmarkBtn.setFocusPainted(false);
+            bookmarkBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            bookmarkBtn.setAlignmentX(Component.LEFT_ALIGNMENT);
+            bookmarkBtn.setMaximumSize(new Dimension(160, 40));
+            bookmarkBtn.addActionListener(e -> {
+                bookmarkBtn.setText("Bookmarked");
+                bookmarkBtn.setBackground(new Color(80, 200, 120));
+                bookmarkBtn.setEnabled(false);
+            });
+
+            detailsPanel.add(titleLabel);
+            detailsPanel.add(Box.createVerticalStrut(6));
+            detailsPanel.add(yearLabel);
+            detailsPanel.add(Box.createVerticalStrut(12));
+            detailsPanel.add(sep);
+            detailsPanel.add(Box.createVerticalStrut(12));
+            detailsPanel.add(descHeading);
+            detailsPanel.add(Box.createVerticalStrut(6));
+            detailsPanel.add(descArea);
+            detailsPanel.add(Box.createVerticalGlue());
+            detailsPanel.add(bookmarkBtn);
+
+            panel.add(detailsPanel, BorderLayout.CENTER);
             this.add(panel);
+
         } catch (Exception ex) {
             System.err.println(ex);
         }

@@ -7,7 +7,7 @@ import java.io.*;
 import java.nio.file.*;
 import javax.swing.*;
 
-public class Login extends JPanel {
+public class Login extends JFrame {
     private JLabel mainLabel;
     private Font f1, f2, f3;
     private JTextField usernameFld;
@@ -15,8 +15,13 @@ public class Login extends JPanel {
     private JPasswordField passwordFld;
     private Cursor cursor;
 
-    public Login(App app) {
-        this.setLayout(null);
+    public Login() {
+        setTitle("Ranking Rangers - Login");
+        setSize(900, 450);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setLayout(null);
 
         // Fonts
         f1 = new Font("Segoe UI Black", Font.BOLD, 60);
@@ -92,9 +97,8 @@ public class Login extends JPanel {
                                 if (line2.equals(passwordLine)) {
                                     JOptionPane.showMessageDialog(null, "Login Successful.",
                                         "Ranking Rangers", JOptionPane.INFORMATION_MESSAGE);
-
-                                    app.showCard(App.HOME_PANEL);
-                                    break;
+                                    openHome();
+                                    return;
                                 }
                             }
                         }
@@ -145,12 +149,19 @@ public class Login extends JPanel {
 
                         JOptionPane.showMessageDialog(null, "Registration Successful.",
                             "Ranking Rangers", JOptionPane.INFORMATION_MESSAGE);
-                        app.showCard(App.HOME_PANEL);
+                        openHome();
                     } catch (Exception ex) {
                         System.err.println(ex);
                     }
                 }
             }
         });
+    }
+
+    /** Open the Home frame and close this one. */
+    private void openHome() {
+        String username = usernameFld.getText().trim();
+        new Home(username).setVisible(true);
+        dispose();
     }
 }

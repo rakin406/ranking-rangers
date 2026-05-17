@@ -1,6 +1,7 @@
 package com.rakin.app.pages;
 
-import com.rakin.app.components.*;
+import com.rakin.app.model.BookmarkedMovie;
+import com.rakin.app.util.BookmarkManager;
 import info.movito.themoviedbapi.model.core.Movie;
 import java.awt.*;
 import java.net.URL;
@@ -13,10 +14,10 @@ public class MoviePage extends JFrame {
     private JLabel titleLabel;
     private Font f1;
 
-    public MoviePage(Movie m) {
+    public MoviePage(Movie m, String username) {
         setTitle("Ranking Rangers");
         setSize(900, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setLayout(new BorderLayout());
@@ -27,6 +28,7 @@ public class MoviePage extends JFrame {
             String title = m.getTitle();
             String posterPath = m.getPosterPath();
             String overview = m.getOverview();
+            String releaseDate = m.getReleaseDate();
 
             // Main panel
             panel = new JPanel(new BorderLayout(20, 0));
@@ -63,7 +65,6 @@ public class MoviePage extends JFrame {
             titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
             // Release year
-            String releaseDate = m.getReleaseDate();
             String year = (releaseDate != null && releaseDate.length() >= 4)
                 ? releaseDate.substring(0, 4)
                 : "Unknown";
@@ -77,7 +78,7 @@ public class MoviePage extends JFrame {
             sep.setForeground(new Color(100, 100, 100));
             sep.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1));
 
-            // Description
+            // Overview
             JLabel descHeading = new JLabel("Overview");
             descHeading.setFont(new Font("Segoe UI", Font.BOLD, 15));
             descHeading.setForeground(new Color(200, 200, 200));
@@ -96,19 +97,25 @@ public class MoviePage extends JFrame {
             descArea.setAlignmentX(Component.LEFT_ALIGNMENT);
             descArea.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
 
-            // Bookmark button
-            JButton bookmarkBtn = new JButton("Bookmark");
+            // Bookmark toggle
+            boolean alreadyBookmarked = BookmarkManager.isBookmarked(username, m.getId());
+            JButton bookmarkBtn = new JButton();
             bookmarkBtn.setFont(new Font("Segoe UI", Font.BOLD, 15));
-            bookmarkBtn.setBackground(new Color(255, 180, 0));
-            bookmarkBtn.setForeground(Color.BLACK);
             bookmarkBtn.setFocusPainted(false);
             bookmarkBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
             bookmarkBtn.setAlignmentX(Component.LEFT_ALIGNMENT);
-            bookmarkBtn.setMaximumSize(new Dimension(160, 40));
+            bookmarkBtn.setMaximumSize(new Dimension(180, 40));
+            applyBookmarkStyle(bookmarkBtn, alreadyBookmarked);
+
             bookmarkBtn.addActionListener(e -> {
-                bookmarkBtn.setText("Bookmarked");
-                bookmarkBtn.setBackground(new Color(80, 200, 120));
-                bookmarkBtn.setEnabled(false);
+                boolean isBookmarked = BookmarkManager.isBookmarked(username, m.getId());
+                if (isBookmarked) {
+                    BookmarkManager.removeBookmark(username, m.getId());
+                } else {
+                    BookmarkManager.addBookmark(
+                        username, new BookmarkedMovie(m.getId(), m.getTitle(), releaseDate));
+                }
+                applyBookmarkStyle(bookmarkBtn, !isBookmarked);
             });
 
             detailsPanel.add(titleLabel);
@@ -128,6 +135,19 @@ public class MoviePage extends JFrame {
 
         } catch (Exception ex) {
             System.err.println(ex);
+        }
+    }
+
+    // Sets button text and color based on current bookmark state
+    private void applyBookmarkStyle(JButton btn, boolean bookmarked) {
+        if (bookmarked) {
+            btn.setText("Remove Bookmark");
+            btn.setBackground(new Color(80, 200, 120));
+            btn.setForeground(Color.BLACK);
+        } else {
+            btn.setText("Bookmark");
+            btn.setBackground(new Color(255, 180, 0));
+            btn.setForeground(Color.BLACK);
         }
     }
 }

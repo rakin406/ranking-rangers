@@ -1,7 +1,10 @@
 package com.rakin.app.components;
 
+import com.rakin.app.pages.MoviePage;
 import info.movito.themoviedbapi.model.core.Movie;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -16,7 +19,7 @@ public class MovieList extends JPanel {
     private static final int IMG_W = CARD_W;
     private static final int IMG_H = 240;
 
-    public MovieList(List<Movie> movies) {
+    public MovieList(List<Movie> movies, String username) {
         this.setLayout(new GridLayout(0, 5, 10, 10)); // 5 columns, auto rows
         f1 = new Font("Segoe UI", Font.PLAIN, 13);
         cursor = new Cursor(Cursor.HAND_CURSOR);
@@ -46,6 +49,12 @@ public class MovieList extends JPanel {
                 JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
                 titleLabel.setFont(f1);
                 card.add(titleLabel, BorderLayout.SOUTH);
+
+                card.addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(MouseEvent e) {
+                        new MoviePage(m, username).setVisible(true);
+                    }
+                });
 
                 this.add(card);
             } catch (Exception ex) {

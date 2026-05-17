@@ -35,7 +35,7 @@ public class Home extends JFrame {
             MovieResultsPage trendingMovies =
                 tmdbApi.getTrending().getMovies(TimeWindow.DAY, "en-US");
 
-            MovieList movieList = new MovieList(trendingMovies.getResults());
+            MovieList movieList = new MovieList(trendingMovies.getResults(), username);
 
             // Make it scrollable in case content overflows
             scroll = new JScrollPane(movieList);

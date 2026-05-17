@@ -1,6 +1,9 @@
 package com.rakin.app.components;
 
+import com.rakin.app.pages.Bookmarks;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class NavigationBar extends JPanel {
@@ -20,6 +23,11 @@ public class NavigationBar extends JPanel {
         bookmarksLabel.setFont(f1);
         bookmarksLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         bookmarksLabel.setCursor(cursor);
+        bookmarksLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                new Bookmarks(username).setVisible(true);
+            }
+        });
         this.add(bookmarksLabel);
 
         usernameLabel = new JLabel();

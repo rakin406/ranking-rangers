@@ -1,4 +1,4 @@
-package com.rakin.app.model;
+package com.rangers.app.model;
 
 public class BookmarkedMovie {
     private final int id;

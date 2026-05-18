@@ -1,6 +1,6 @@
-package com.rakin.app.components;
+package com.rangers.app.components;
 
-import com.rakin.app.pages.Bookmarks;
+import com.rangers.app.pages.Bookmarks;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

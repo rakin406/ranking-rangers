@@ -1,7 +1,7 @@
-package com.rakin.app;
+package com.rangers.app;
 
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.rakin.app.pages.*;
+import com.rangers.app.pages.*;
 import javax.swing.*;
 
 public class App {

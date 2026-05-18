@@ -1,7 +1,7 @@
-package com.rakin.app.pages;
+package com.rangers.app.pages;
 
-import com.rakin.app.model.BookmarkedMovie;
-import com.rakin.app.util.BookmarkManager;
+import com.rangers.app.model.BookmarkedMovie;
+import com.rangers.app.util.BookmarkManager;
 import java.awt.*;
 import java.util.List;
 import javax.swing.*;

@@ -1,6 +1,6 @@
-package com.rakin.app.pages;
+package com.rangers.app.pages;
 
-import com.rakin.app.components.*;
+import com.rangers.app.components.*;
 import info.movito.themoviedbapi.*;
 import info.movito.themoviedbapi.model.core.*;
 import info.movito.themoviedbapi.tools.model.time.TimeWindow;

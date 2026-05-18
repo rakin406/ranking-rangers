@@ -92,7 +92,7 @@ ranking-rangers/
 ├── src/
 │   └── main/
 │       └── java/
-│           └── com/rakin/app/   # Application source code
+│           └── com/rangers/app/   # Application source code
 ├── .env.example                 # Environment variable template
 ├── pom.xml                      # Maven build configuration
 └── README.md

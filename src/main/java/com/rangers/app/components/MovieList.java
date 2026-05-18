@@ -1,6 +1,6 @@
-package com.rakin.app.components;
+package com.rangers.app.components;
 
-import com.rakin.app.pages.MoviePage;
+import com.rangers.app.pages.MoviePage;
 import info.movito.themoviedbapi.model.core.Movie;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

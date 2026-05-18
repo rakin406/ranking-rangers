@@ -1,6 +1,6 @@
-package com.rakin.app.pages;
+package com.rangers.app.pages;
 
-import com.rakin.app.App;
+import com.rangers.app.App;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;

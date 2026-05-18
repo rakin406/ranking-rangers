@@ -1,6 +1,6 @@
-package com.rakin.app.util;
+package com.rangers.app.util;
 
-import com.rakin.app.model.BookmarkedMovie;
+import com.rangers.app.model.BookmarkedMovie;
 import java.io.*;
 import java.util.*;
 

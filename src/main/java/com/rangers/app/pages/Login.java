@@ -8,7 +8,9 @@ import java.nio.file.*;
 import javax.swing.*;
 
 public class Login extends JFrame {
-    private JLabel mainLabel;
+    private Container c;
+    private ImageIcon logoIcon;
+    private JLabel mainLabel, logoLabel;
     private Font f1, f2, f3;
     private JTextField usernameFld;
     private JButton loginBtn, registerBtn;
@@ -23,10 +25,23 @@ public class Login extends JFrame {
         setResizable(false);
         setLayout(null);
 
+        c = this.getContentPane();
+        c.setLayout(null);
+
+        // Logo
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image scaledImage = originalIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+        logoIcon = new ImageIcon(scaledImage);
+        this.setIconImage(logoIcon.getImage());
+
         // Fonts
         f1 = new Font("Segoe UI Black", Font.BOLD, 60);
         f2 = new Font("Segoe UI Black", Font.PLAIN, 25);
         f3 = new Font("Segoe UI", Font.PLAIN, 22);
+
+        logoLabel = new JLabel(logoIcon);
+        logoLabel.setBounds(50, 70, logoIcon.getIconWidth(), logoIcon.getIconHeight());
+        c.add(logoLabel);
 
         // Cursor for buttons
         cursor = new Cursor(Cursor.HAND_CURSOR);

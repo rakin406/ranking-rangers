@@ -19,7 +19,7 @@ public class Bookmarks extends JFrame {
 
         setTitle("Bookmarks");
         setSize(900, 600);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // don't kill the whole app
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setLayout(new BorderLayout());
@@ -44,8 +44,6 @@ public class Bookmarks extends JFrame {
 
         refreshList();
     }
-
-    // ── Build / rebuild the movie rows ──────────────────────────────────────
 
     private void refreshList() {
         listPanel.removeAll();
@@ -79,7 +77,6 @@ public class Bookmarks extends JFrame {
         row.setBorder(BorderFactory.createEmptyBorder(10, 16, 10, 16));
         row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
 
-        // Number + title (left side)
         JLabel number = new JLabel((index + 1) + ".");
         number.setFont(numberFont);
         number.setForeground(Color.LIGHT_GRAY);
@@ -94,7 +91,6 @@ public class Bookmarks extends JFrame {
         left.add(number);
         left.add(title);
 
-        // Year + delete button (right side)
         String releaseDate = movie.getReleaseDate();
         String year = (releaseDate != null && releaseDate.length() >= 4)
             ? releaseDate.substring(0, 4)

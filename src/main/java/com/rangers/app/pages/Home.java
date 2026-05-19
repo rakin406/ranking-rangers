@@ -37,7 +37,6 @@ public class Home extends JFrame {
 
             MovieList movieList = new MovieList(trendingMovies.getResults(), username);
 
-            // Make it scrollable in case content overflows
             scroll = new JScrollPane(movieList);
             scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);

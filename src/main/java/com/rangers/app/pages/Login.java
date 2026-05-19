@@ -173,7 +173,6 @@ public class Login extends JFrame {
         });
     }
 
-    /** Open the Home frame and close this one. */
     private void openHome() {
         String username = usernameFld.getText().trim();
         new Home(username).setVisible(true);

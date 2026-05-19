@@ -8,8 +8,7 @@ public class BookmarkManager {
     private static final String FILE_PATH = "bookmarks.txt";
     private static final String DELIMITER = "|";
 
-    // ── Read ────────────────────────────────────────────────────────────────
-
+    // Read
     public static synchronized List<BookmarkedMovie> getBookmarks(String username) {
         List<BookmarkedMovie> list = new ArrayList<>();
         File file = new File(FILE_PATH);
@@ -35,8 +34,7 @@ public class BookmarkManager {
         return getBookmarks(username).stream().anyMatch(m -> m.getId() == movieId);
     }
 
-    // ── Write ───────────────────────────────────────────────────────────────
-
+    // Write
     public static synchronized void addBookmark(String username, BookmarkedMovie movie) {
         if (isBookmarked(username, movie.getId()))
             return;
